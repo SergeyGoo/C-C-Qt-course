@@ -1,24 +1,24 @@
 #include <stdio.h>
-#include <locale.h>
+#include <string.h>
 
 
 
 int main(){
-	setlocale(LC_ALL, "ru_RU.UTF-8");
-	char *arr[10000];
+	char arr[10001];
 	FILE *sym = fopen("symbols.txt", "r");
-	fgets (arr, 10001, sym);
-	int i = 0;
-	int k = 0;
-	int j = 0; 
-	for (;k<125; k++){
-		int i = 0;
+	int i=0;
+	while (feof(sym) == 0 || i<sizeof(arr)) {
+		char c = fgetc(sym);
+		arr [i]= c;
+		i++;
+		} 
+	for (int k = 0;k<125; k++){
 		int j = 0;		
-		while ( i< 10001){
-			if (arr[i]==(char)k)j++;i++;
-}
+		for (int i=0;i<strlen(arr);i++){
+			if (arr[i]==(char)k) j++;
+			}
 		if (j!=0)printf ("Num of %c is: %d \n", k, j);
-}
+		}
 
 	fclose(sym);
 
