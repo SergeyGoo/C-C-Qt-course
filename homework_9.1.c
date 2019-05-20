@@ -55,9 +55,9 @@ int main(){
 		stop = clock();
 		arr_qsort[a] = stop - start;
 		}	
-	for (int j=0; j<10; j++){		
+	/*for (int j=0; j<10; j++){		
 		for (int i=0; i<1000; i++){
-			printf("%d ", arr[j][i]);}}
+			printf("%d ", arr[j][i]);}}*/
 	for (int j=0; j<10; j++){
 		printf("Time of '%d'is %d\n", j, arr_qsort[j]);}
 	/*printf ("Time for QuickSort is: %ld tps\n", (stop-start));
