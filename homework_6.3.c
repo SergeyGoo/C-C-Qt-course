@@ -10,7 +10,7 @@ int main(){
 	FILE *sym = fopen("homework_6.3.c", "r");
 	int i=0;
 	int a=0;
-	while (feof(sym) == 0 ) {
+	while (feof(sym) == 0 && i<sizeof(arr) ) {
 		char c = fgetc(sym);
 		a += sizeof(c);
 		arr [i]= c;
