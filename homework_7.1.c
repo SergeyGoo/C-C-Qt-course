@@ -1,41 +1,43 @@
 #include <stdio.h>
+#include <string.h>
 
 
 int entering(){
 	FILE *pbook = fopen("PhoneBook.txt", "a+");
 	char *name[30];
 	char *number[11];
-	printf("\nEnter name:");
+	printf("\nEnter name:	");
 	scanf("%s", &name);
-	printf("\nEnter number:");
+	printf("\nEnter number:	");
 	scanf("%s", &number);
 	fprintf(pbook,"%s %s\n", name, number);
 	fclose (pbook);
 }
 
 int output(){
-	char *str[100];
+	char str[10000];
 	FILE *phbook = fopen("PhoneBook.txt", "r");
 
-    while (1)
-    {
-         fgets (str,sizeof(str),phbook);
-         if ( feof (phbook) != 0)
-         {  
-            break;
-         }
-        printf("%s", str);
-   }
-
+    while (feof (phbook) == 0){	
+		fgets (str,sizeof(str),phbook);
+    	printf("%s", str);
+	}
 	fclose (phbook);
     return 0;
 }
 
 int search(){
+	char str[10000];
+	char search_data[100];
+	char *p;
     FILE *phnbook = fopen("PhoneBook.txt", "r+");
-    char p;
-    p = strstr(phnbook, "Ser");
-    printf("%s", p);
+	printf ("Enter data for search:	");    
+	scanf("%s", &search_data);
+	while (feof (phnbook) == 0){	
+		fgets (str,sizeof(str),phnbook);
+    	p = strstr(str, search_data);
+    	printf(p);
+	}
     return 0;
 
 
